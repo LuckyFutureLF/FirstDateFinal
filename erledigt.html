@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erledigt</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        let noClickCount = 0;
+
+        function showKneelMessage() {
+            var overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            
+            var newGif = document.createElement('img');
+            newGif.src = 'anime-knees.gif'; // Pfad zum neuen GIF
+            newGif.alt = 'Ein süßes GIF';
+            newGif.style.width = '300px';
+            newGif.style.height = 'auto';
+            
+            var kneelMessage = document.createElement('p');
+            kneelMessage.textContent = 'Dann geh auf die Knie!';
+            kneelMessage.style.color = 'black';
+            kneelMessage.style.fontSize = '20px';
+            
+            popup.appendChild(newGif);
+            popup.appendChild(kneelMessage);
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+        }
+
+        function showCuddleMessage() {
+            var overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            
+            var newGif = document.createElement('img');
+            newGif.src = 'snuggles-snuggle.gif'; // Pfad zum neuen GIF
+            newGif.alt = 'Ein süßes GIF';
+            newGif.style.width = '300px';
+            newGif.style.height = 'auto';
+            
+            var cuddleMessage = document.createElement('p');
+            cuddleMessage.textContent = 'Okay, dafür aber kuscheln!';
+            cuddleMessage.style.color = 'black';
+            cuddleMessage.style.fontSize = '20px';
+            
+            popup.appendChild(newGif);
+            popup.appendChild(cuddleMessage);
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+        }
+
+        function showBegMessage() {
+            var overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            
+            var newGif = document.createElement('img');
+            newGif.src = 'coffeeguydave-coffeegroup.gif'; // Pfad zum neuen GIF
+            newGif.alt = 'Ein süßes GIF';
+            newGif.style.width = '300px';
+            newGif.style.height = 'auto';
+
+            var begMessage = document.createElement('p');
+            begMessage.textContent = 'Dann bettle darum, dass ich dich anfasse!';
+            begMessage.style.color = 'black';
+            begMessage.style.fontSize = '20px';
+
+            var closeButton = document.createElement('button');
+            closeButton.textContent = 'OK';
+            closeButton.onclick = function() {
+                document.body.removeChild(overlay);
+            };
+            closeButton.style.backgroundColor = '#ff1493';
+            closeButton.style.color = 'white';
+            closeButton.style.border = 'none';
+            closeButton.style.padding = '10px 20px';
+            closeButton.style.margin = '10px';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.cursor = 'pointer';
+            
+            popup.appendChild(newGif);
+            popup.appendChild(begMessage);
+            popup.appendChild(closeButton);
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+        }
+
+        function showDesireMessage() {
+            var overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            
+            var desireMessage = document.createElement('p');
+            desireMessage.textContent = 'Wie sehr willst du es?';
+            desireMessage.style.color = 'black';
+            desireMessage.style.fontSize = '20px';
+
+            var begButton = document.createElement('button');
+            begButton.textContent = 'Sehr';
+            begButton.onclick = function() {
+                document.body.removeChild(overlay);
+                showBegMessage();
+            };
+            begButton.style.backgroundColor = '#ff1493';
+            begButton.style.color = 'white';
+            begButton.style.border = 'none';
+            begButton.style.padding = '10px 20px';
+            begButton.style.margin = '10px';
+            begButton.style.borderRadius = '5px';
+            begButton.style.cursor = 'pointer';
+
+            var kneelButton = document.createElement('button');
+            kneelButton.textContent = 'Ich würde alles tun';
+            kneelButton.onclick = function() {
+                document.body.removeChild(overlay);
+                showKneelMessage();
+            };
+            kneelButton.style.backgroundColor = '#ff1493';
+            kneelButton.style.color = 'white';
+            kneelButton.style.border = 'none';
+            kneelButton.style.padding = '10px 20px';
+            kneelButton.style.margin = '10px';
+            kneelButton.style.borderRadius = '5px';
+            kneelButton.style.cursor = 'pointer';
+            
+            popup.appendChild(desireMessage);
+            popup.appendChild(begButton);
+            popup.appendChild(kneelButton);
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+        }
+
+        function moveButton() {
+            showCuddleMessage();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Hier fügst du das GIF ein -->
+        <img src="bella-shocked.gif" alt="Ein süßes GIF" style="width: 300px; height: auto;">
+        
+        <h1>Nach dem ganzen küssen habe ich Hunger bekommen!</h1>
+        <p>Bist du in der Mood disrepectfully angefasst zu werden?</p>
+
+        <button onclick="showDesireMessage()">Ja</button>
+        <button id="noButton" onclick="moveButton()">Nein</button>
+    </div>
+</body>
+</html>

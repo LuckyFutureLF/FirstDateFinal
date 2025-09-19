@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einladung zum Date</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        let noClickCount = 0;
+        let timerStarted = false;
+        let timerId;
+
+        function showLoveMessage() {
+            var overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            
+            var newGif = document.createElement('img');
+            newGif.src = 'cute-bears-love.gif'; // Pfad zum neuen GIF
+            newGif.alt = 'Ein weiteres süßes GIF';
+            newGif.style.width = '300px';
+            newGif.style.height = 'auto';
+            
+            var loveMessage = document.createElement('p');
+            loveMessage.textContent = 'Yayyyy, ich freue mich sooooo sehhrrrrr❤️!!!';
+            loveMessage.style.color = 'black';
+            loveMessage.style.fontSize = '20px';
+
+            var continueButton = document.createElement('button');
+            continueButton.textContent = 'Weiter';
+            continueButton.onclick = function() {
+                window.location.href = 'weiter.html';
+            };
+            continueButton.style.backgroundColor = '#ff1493';
+            continueButton.style.color = 'white';
+            continueButton.style.border = 'none';
+            continueButton.style.padding = '10px 20px';
+            continueButton.style.margin = '10px';
+            continueButton.style.borderRadius = '5px';
+            continueButton.style.cursor = 'pointer';
+            
+            popup.appendChild(newGif);
+            popup.appendChild(loveMessage);
+            popup.appendChild(continueButton);
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+        }
+
+        function showNoLoveMessage() {
+            var overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            
+            var newGif = document.createElement('img');
+            newGif.src = 'f35d33a6290e7d94b24347643cd39efa.gif'; // Pfad zum neuen GIF
+            newGif.alt = 'Ein weiteres süßes GIF';
+            newGif.style.width = '300px';
+            newGif.style.height = 'auto';
+            
+            var noLoveMessage = document.createElement('p');
+            noLoveMessage.textContent = 'Liebst du mich etwa nicht?';
+            noLoveMessage.style.color = 'black';
+            noLoveMessage.style.fontSize = '20px';
+            
+            popup.appendChild(newGif);
+            popup.appendChild(noLoveMessage);
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+        }
+
+        function showIndecisionMessage() {
+            var overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            
+            var newGif = document.createElement('img');
+            newGif.src = 'brown-bear-white-bear.gif'; // Pfad zum neuen GIF
+            newGif.alt = 'Ein süßes GIF';
+            newGif.style.width = '300px';
+            newGif.style.height = 'auto';
+            
+            var indecisionMessage = document.createElement('p');
+            indecisionMessage.textContent = 'Kannst du dich nicht entscheiden?';
+            indecisionMessage.style.color = 'black';
+            indecisionMessage.style.fontSize = '20px';
+
+            var doButton = document.createElement('button');
+            doButton.textContent = 'Doooooch';
+            doButton.onclick = function() {
+                clearTimeout(timerId); // Timer löschen
+                document.body.removeChild(overlay);
+                showKissPaymentMessage();
+            };
+            doButton.style.backgroundColor = '#ff1493';
+            doButton.style.color = 'white';
+            doButton.style.border = 'none';
+            doButton.style.padding = '10px 20px';
+            doButton.style.margin = '10px';
+            doButton.style.borderRadius = '5px';
+            doButton.style.cursor = 'pointer';
+            
+            popup.appendChild(newGif);
+            popup.appendChild(indecisionMessage);
+            popup.appendChild(doButton);
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+        }
+
+        function showKissPaymentMessage() {
+            var overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            
+            var newGif = document.createElement('img');
+            newGif.src = 'bubu-dudu-sseeyall.gif'; // Pfad zum neuen GIF
+            newGif.alt = 'Ein süßes GIF';
+            newGif.style.width = '300px';
+            newGif.style.height = 'auto';
+            
+            var kissPaymentMessage = document.createElement('p');
+            kissPaymentMessage.textContent = 'Wenn du weiter machen willst, dann musst du mit einem Kuss bezahlen';
+            kissPaymentMessage.style.color = 'black';
+            kissPaymentMessage.style.fontSize = '20px';
+
+            var pinInput = document.createElement('input');
+            pinInput.type = 'password';
+            pinInput.placeholder = 'PIN eingeben';
+            pinInput.style.margin = '10px';
+            pinInput.style.padding = '10px';
+            pinInput.style.borderRadius = '5px';
+            pinInput.style.border = '2px solid gray';
+            pinInput.style.fontSize = '16px';
+
+            var backButton = document.createElement('button');
+            backButton.textContent = 'Zurück zur Startseite';
+            backButton.onclick = function() {
+                if (pinInput.value === '136') {
+                    var overlayToRemove = document.querySelector('.overlay');
+                    document.body.removeChild(overlayToRemove);
+                } else {
+                    alert('Falscher PIN! Versuche es erneut.');
+                }
+            };
+            backButton.style.backgroundColor = '#ff1493';
+            backButton.style.color = 'white';
+            backButton.style.border = 'none';
+            backButton.style.padding = '10px 20px';
+            backButton.style.margin = '10px';
+            backButton.style.borderRadius = '5px';
+            backButton.style.cursor = 'pointer';
+            
+            popup.appendChild(newGif);
+            popup.appendChild(kissPaymentMessage);
+            popup.appendChild(pinInput);
+            popup.appendChild(backButton);
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+        }
+
+        function moveButton() {
+            var button = document.getElementById('noButton');
+            var container = document.querySelector('.container');
+            var containerWidth = container.clientWidth;
+            var containerHeight = container.clientHeight;
+            var buttonWidth = button.clientWidth;
+            var buttonHeight = button.clientHeight;
+
+            var newLeft = Math.random() * (containerWidth - buttonWidth);
+            var newTop = Math.random() * (containerHeight - buttonHeight);
+
+            button.style.position = 'absolute';
+            button.style.left = newLeft + 'px';
+            button.style.top = newTop + 'px';
+
+            noClickCount++;
+            if (noClickCount >= 5) {
+                showNoLoveMessage();
+            }
+        }
+
+        function startTimer() {
+            if (!timerStarted) {
+                timerId = setTimeout(showIndecisionMessage, 5000); // Timer für 30 Sekunden
+                timerStarted = true;
+            }
+        }
+
+        window.onload = function() {
+            if (!timerStarted) {
+                startTimer();
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Hier fügst du das erste GIF ein -->
+        <img src="jumping-bear-hearts-no-png.gif" alt="Ein süßes GIF" style="width: 300px; height: auto;">
+        
+        <h1>First Dateeeee?<a href="easteregg.html" style="text-decoration: none; color: inherit;">❤️</a></h1>
+        <p>Heyyy Schatzzz, ich würde gerne mit dir unser erstes Date erneut erleben. Darf ich meine tolle Freundin nochmals ausführen und mich beim Billiard blamieren?</p>
+
+        <button onclick="showLoveMessage()">Ja</button>
+        <button id="noButton" onclick="moveButton()">Nein</button>
+    </div>
+</body>
+</html>
